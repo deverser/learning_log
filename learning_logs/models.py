@@ -23,5 +23,11 @@ class Entry(models.Model):
 
     def __str__(self):
         """Возвращает строковое представление модели"""
-        return self.text[:50] + "..."
+        if len(self.text) > 50:
+            # Если длина текста больше 50 знаков, то обрезаем текст до 50 знаков и добавляем многоточие в конце
+            return self.text[:50] + "..."
+        else:
+            return self.text
+
+
 
