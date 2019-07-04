@@ -14,6 +14,7 @@ def topics(request):
     context = {'topics': topics}
     return render(request, 'learning_logs/topics.html', context)
 
+
 def topic(request, topic_id):
     """Выводит одну тему и все её записи"""
     topic = Topic.objects.get(id=topic_id)
