@@ -122,5 +122,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+""" 
+Django settings for Learning Log project
+
+"""
 # My settings
 LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/users/login/'
