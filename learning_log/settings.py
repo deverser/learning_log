@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Сторонние приложения
+    'bootstrap4',
     # Наши приложения
     'learning_logs',
     'users',
@@ -129,3 +131,8 @@ Django settings for Learning Log project
 # My settings
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/users/login/'
+
+# Settings for django-bootstrap4
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
