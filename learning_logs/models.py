@@ -7,7 +7,7 @@ class Topic(models.Model):
     """Тема, которую изучает пользователь"""
     text = models.CharField(max_length=200)
     date_added = models.DateTimeField(auto_now_add=True)
-    owner = models.ForeignKey(User)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         """Возвращает строковое представление модели"""
@@ -26,7 +26,8 @@ class Entry(models.Model):
     def __str__(self):
         """Возвращает строковое представление модели"""
         if len(self.text) > 50:
-            # Если длина текста больше 50 знаков, то обрезаем текст до 50 знаков и добавляем многоточие в конце
+            # Если длина текста больше 50 знаков, то обрезаем текст до 50 знаков
+            # и добавляем многоточие в конце
             return self.text[:50] + "..."
         else:
             return self.text
