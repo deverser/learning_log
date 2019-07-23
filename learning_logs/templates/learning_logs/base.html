@@ -33,7 +33,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
-                        <li class="nav-item"><a>Hello, {{ user.username }}. </a></li>
+                        <li class="nav-item"><a class="nav-link">Hello, {{ user.username }}. </a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'users:logout' %}"> Log Out </a></li>
                     {% else %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'users:login' %}"> Log in </a></li>
