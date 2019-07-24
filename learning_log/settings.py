@@ -136,3 +136,21 @@ LOGIN_URL = '/users/login/'
 BOOTSTRAP4 = {
     'include_jquery': True,
 }
+
+# Настройки Heroku
+cwd = os.getcwd()
+if cwd == '/app' or cwd[:4] == '/tmp':
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.config(default='postgres://localhost')
+    }
+# Поддержка заголовка 'X-Forwarded-Proto' для request.is_secure().
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# Разрешены все заголовки хостов.
+    ALLOWED_HOSTS = ['*']
+# Конфигурация статических ресурсов
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT = 'staticfiles'
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static'),
+    )
