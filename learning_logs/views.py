@@ -97,9 +97,10 @@ def delete_entry(request, entry_id):
     try:
         entry = Entry.objects.get(id=entry_id)
         topic = entry.topic
+        topic_id = entry.topic_id
         check_topic_owner(topic, request)
         entry.delete()
-        return HttpResponseRedirect('/topics')
+        return HttpResponseRedirect(('/topics/{}').format(topic_id))
     except Entry.DoesNotExist:
         return Http404
 
