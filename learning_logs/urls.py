@@ -10,6 +10,8 @@ urlpatterns = [
     path('new_entry/<int:topic_id>/', views.new_entry, name='new_entry'),
     # Страница редактирования записи
     path('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry'),
+    # Удаление записи
+    path('delete_entry/<int:entry_id>/', views.delete_entry, name='delete_entry'),
     # Подробная страница одной темы
     path('topics/<int:topic_id>/', views.topic, name='topic'),
     # Страница для добавления новой темы

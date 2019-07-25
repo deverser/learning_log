@@ -54,8 +54,7 @@ def new_topic(request):
 def new_entry(request, topic_id):
     """Добавляет новую запись по конкретной теме"""
     topic = Topic.objects.get(id=topic_id)
-    if topic.owner != request.user:
-        raise Http404
+    check_topic_owner(topic, request)
     if request.method != 'POST':
         # Данные не отправлялись; создается пустая форма.
         form = EntryForm()
@@ -90,6 +89,19 @@ def edit_entry(request, entry_id):
             return HttpResponseRedirect(reverse('learning_logs:topic', args=[topic.id]))
     context = {'entry': entry, 'topic': topic, 'form': form}
     return render(request, 'learning_logs/edit_entry.html', context)
+
+
+@login_required
+def delete_entry(request, entry_id):
+    """Совершает удаление записи"""
+    try:
+        entry = Entry.objects.get(id=entry_id)
+        topic = entry.topic
+        check_topic_owner(topic, request)
+        entry.delete()
+        return HttpResponseRedirect('/topics')
+    except Entry.DoesNotExist:
+        return Http404
 
 
 def check_topic_owner(topic, request):

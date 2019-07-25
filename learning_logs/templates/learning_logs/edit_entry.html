@@ -13,7 +13,7 @@
       {% csrf_token %}
       {% bootstrap_form form %}
       {% bootstrap_button "Save changes" button_type="submit" button_class="btn-primary" %}
-
+      <a href="{% url 'learning_logs:delete_entry' entry.id %}" class="btn btn-primary">Delete entry</a>
   </form>
 
 {% endblock content %}
