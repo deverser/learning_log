@@ -51,6 +51,17 @@ def new_topic(request):
 
 
 @login_required
+def delete_topic(request, topic_id):
+    try:
+        topic = Topic.objects.get(id=topic_id)
+        check_topic_owner(topic, request)
+        topic.delete()
+        return HttpResponseRedirect('/topics')
+    except Topic.DoesNotExist:
+        return Http404
+
+
+@login_required
 def new_entry(request, topic_id):
     """Добавляет новую запись по конкретной теме"""
     topic = Topic.objects.get(id=topic_id)

@@ -16,6 +16,8 @@ urlpatterns = [
     path('topics/<int:topic_id>/', views.topic, name='topic'),
     # Страница для добавления новой темы
     path('new_topic/', views.new_topic, name='new_topic'),
+    # Удаление темы
+    path('delete_topic/<int:topic_id>/', views.delete_topic, name='delete_topic'),
     # Вывод всех тем
     path('topics/', views.topics, name='topics'),
     # Домашняя страница
