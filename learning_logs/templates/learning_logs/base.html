@@ -29,15 +29,15 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="navbar-nav mr-auto">
-                    <li><a href="{% url 'learning_logs:topics' %}"> Topics </a></li>
+                    <li><a class="btn btn-primary btn-sm" href="{% url 'learning_logs:topics' %}"> Topics </a></li>
                 </ul>
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link">Hello, {{ user.username }}. </a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'users:logout' %}"> Log Out </a></li>
+                        <li class="nav-item"><a class="btn btn-outline-info" href="{% url 'users:logout' %}"> Log Out </a></li>
                     {% else %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'users:login' %}"> Log in </a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'users:register' %}"> Register </a></li>
+                        <li class="nav-item"><a class="btn btn-outline-info" href="{% url 'users:register' %}"> Register </a></li>
                     {% endif %}
                 </ul>
             </div><!--/.nav-collapse -->

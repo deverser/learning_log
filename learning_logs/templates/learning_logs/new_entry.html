@@ -6,7 +6,7 @@
 {% endblock header %}
 
 {% block content %}
-  <p><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a></p>
+  <p><a class="badge badge-primary" href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a></p>
 
   <form class="form" action="{% url 'learning_logs:new_entry' topic.id %}" method="post">
 
